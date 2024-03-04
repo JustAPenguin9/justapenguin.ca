@@ -1,0 +1,191 @@
+@import "@fontsource/fira-mono";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	/* fonts */
+	--font-body: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+		Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	--font-mono: "Fira Mono", monospace;
+
+	font-family: var(--font-body);
+
+	--border-radius: 3px;
+
+	/* all colours */
+	--color-white: #fff0f3; /* #F4F1DE */
+	--color-black: black;
+	--color-primary: #ff6a10;
+	--color-error: #ff5449;
+	--color-success: #9f923b; /* #606C38 */
+
+	/* FIX: these colours are bad */
+	--color-light-background-higher: #fefae0;
+	--color-light-background: #efebd2;
+	--color-light-background-lower: #dfdbc4;
+
+	--color-dark-background-higher: #3e2312;
+	--color-dark-background: #301a0d;
+	--color-dark-background-lower: #2b170b;
+
+	/* default colour scheme (light) */
+	--color-background-higher: var(--color-light-background-higher);
+	--color-background: var(--color-light-background);
+	--color-background-lower: var(--color-light-background-lower);
+	--color-text: var(--color-black);
+	/* TODO: --color-text-dim: ; */
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background-higher: var(--color-dark-background-higher);
+		--color-background: var(--color-dark-background);
+		--color-background-lower: var(--color-dark-background-lower);
+		--color-text: var(--color-white);
+	}
+}
+
+html {
+	color-scheme: dark light;
+	font-size: 100%;
+	hanging-punctuation: first last; /* not supported in chrome afaik */
+}
+
+:root:has(#theme [value="dark"]:checked) {
+	color-scheme: dark;
+	--color-background-higher: var(--color-dark-background-higher);
+	--color-background: var(--color-dark-background);
+	--color-background-lower: var(--color-dark-background-lower);
+	--color-text: var(--color-white);
+}
+
+:root:has(#theme [value="light"]:checked) {
+	color-scheme: light;
+	--color-background-higher: var(--color-light-background-higher);
+	--color-background: var(--color-light-background);
+	--color-background-lower: var(--color-light-background-lower);
+	--color-text: var(--color-black);
+}
+
+body {
+	min-height: 100svh;
+	-webkit-font-smoothing: antialiased;
+	color: var(--color-text);
+	background-color: var(--color-background);
+	/* background-size: 100vw 100vh; */
+}
+
+image,
+picture,
+svg,
+video,
+canvas {
+	display: block;
+	max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+	/* padding: 1em; */
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-text);
+	overflow-wrap: break-word;
+	line-height: 2em;
+}
+
+h1 {
+	/* h1 is default 150% */
+	font-size: 200%;
+}
+
+p,
+li {
+	max-width: 80ch;
+	line-height: 1.5em;
+	/* hyphens: auto; */
+	text-wrap: pretty;
+}
+
+/* old ipad is 1080px wide */
+@media (width >= 1100px) {
+	article {
+		font-size: 140%;
+	}
+}
+
+article {
+	max-width: 80ch;
+}
+
+article h1 {
+	color: var(--color-primary);
+}
+
+article p,
+ol,
+ul {
+	margin-left: 0.5em;
+}
+
+article ol {
+	/* for the numbers */
+	padding-left: 2em;
+}
+
+article p {
+	padding-block: 0.5em;
+}
+
+/* TODO: link colours */
+/* a {
+	color: darkblue;
+}
+a:hover {
+	color: blue;
+}
+a:visited {
+	color: magenta;
+} */
+
+textarea,
+input,
+button,
+select {
+	font-size: inherit;
+	font-family: inherit;
+	color: var(--color-text);
+	/* font: inherit; */
+}
+
+button:focus:not(:focus-visible) {
+	outline: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	:has(:target) {
+		scroll-behavior: smooth;
+		scroll-padding: 3rem; /* can be larger */
+	}
+}
