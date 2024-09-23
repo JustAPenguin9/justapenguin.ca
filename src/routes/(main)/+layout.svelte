@@ -26,7 +26,7 @@
 	</main>
 
 	<footer>
-		<a href="legal">Legal notices</a>
+		<a href="/legal">Legal notices</a>
 	</footer>
 </div>
 
